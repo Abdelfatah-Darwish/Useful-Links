@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_application_21_6_2024/custom_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,93 +8,83 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF4A148C), Color(0xFF880E4F)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
         title: const Text('Useful Links'),
         centerTitle: true,
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16.0),
-        children: [
-          _buildButton(
-            icon: Icons.video_library,
-            label: 'Watch Flutter tutorials on YouTube',
-            color: Colors.red,
-            url: Uri.parse('https://www.youtube.com/c/flutterdev'),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF4A148C), Color(0xFF880E4F)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-          const SizedBox(height: 16),
-          _buildButton(
-            icon: Icons.code,
-            label: 'Flutter GitHub repository',
-            color: Colors.black,
-            url: Uri.parse('https://github.com/'),
-          ),
-          const SizedBox(height: 16),
-          _buildButton(
-            icon: Icons.article,
-            label: 'Flutter Medium publication',
-            color: Colors.deepPurple,
-            url: Uri.parse('https://medium.com/flutter'),
-          ),
-          const SizedBox(height: 16),
-          _buildButton(
-            icon: Icons.web,
-            label: 'Flutter Twitter account',
-            color: Colors.blueAccent,
-            url: Uri.parse('https://x.com/flutterdev'),
-          ),
-          const SizedBox(height: 16),
-          _buildButton(
-            icon: Icons.facebook,
-            label: 'Flutter Facebook page',
-            color: Colors.blue,
-            url: Uri.parse('https://www.facebook.com/flutterdev'),
-          ),
-          const SizedBox(height: 16),
-          _buildButton(
-            icon: Icons.web,
-            label: 'Show Flutter homepage',
-            color: Colors.blue,
-            url: Uri.parse('https://flutter.dev'),
-          ),
-          const SizedBox(height: 16),
-          _buildButton(
-            icon: Icons.reddit,
-            label: 'FlutterDev subreddit',
-            color: Colors.orange,
-            url: Uri.parse('https://www.reddit.com/r/FlutterDev/'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildButton({
-    required IconData icon,
-    required String label,
-    required Color color,
-    required Uri url,
-  }) {
-    return ElevatedButton.icon(
-      onPressed: () => _launchUrl(url),
-      icon: Icon(icon, color: Colors.white),
-      label: Text(label),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: color,
-        minimumSize: const Size(double.infinity, 50),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
         ),
-        elevation: 10,
-        textStyle: const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
+        child: Center(
+          child: ListView(
+            padding: const EdgeInsets.all(16.0),
+            shrinkWrap: true,
+            children: const [
+              CustomButton(
+                icon: Icons.video_library,
+                label: 'Watch Flutter tutorials on YouTube',
+                color: Colors.red,
+                url: 'https://www.youtube.com/c/flutterdev',
+              ),
+              SizedBox(height: 16),
+              CustomButton(
+                icon: Icons.code,
+                label: 'Flutter GitHub repository',
+                color: Colors.black,
+                url: 'https://github.com/flutter/flutter',
+              ),
+              SizedBox(height: 16),
+              CustomButton(
+                icon: Icons.article,
+                label: 'Flutter Medium publication',
+                color: Colors.deepPurple,
+                url: 'https://medium.com/flutter',
+              ),
+              SizedBox(height: 16),
+              CustomButton(
+                icon: Icons.web,
+                label: 'Flutter Twitter account',
+                color: Colors.blueAccent,
+                url: 'https://twitter.com/flutterdev',
+              ),
+              SizedBox(height: 16),
+              CustomButton(
+                icon: Icons.facebook,
+                label: 'Flutter Facebook page',
+                color: Colors.blue,
+                url: 'https://www.facebook.com/flutterdev',
+              ),
+              SizedBox(height: 16),
+              CustomButton(
+                icon: Icons.web,
+                label: 'Show Flutter homepage',
+                color: Colors.blue,
+                url: 'https://flutter.dev',
+              ),
+              SizedBox(height: 16),
+              CustomButton(
+                icon: Icons.reddit,
+                label: 'FlutterDev subreddit',
+                color: Colors.orange,
+                url: 'https://www.reddit.com/r/FlutterDev/',
+              ),
+            ],
+          ),
         ),
       ),
     );
-  }
-
-  Future<void> _launchUrl(Uri url) async {
-    if (!await launchUrl(url)) {
-      throw Exception('Could not launch $url');
-    }
   }
 }
