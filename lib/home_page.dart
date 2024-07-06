@@ -1,25 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void main() {
-  runApp(const UsefulLinksApp());
-}
-
-class UsefulLinksApp extends StatelessWidget {
-  const UsefulLinksApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Useful Links',
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-      ),
-      home: const HomePage(),
-    );
-  }
-}
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
