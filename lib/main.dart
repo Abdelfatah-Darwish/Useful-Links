@@ -52,8 +52,21 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Useful Links'),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: AppBar(
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xFF4A148C), Color(0xFF880E4F)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+          ),
+          title: const Text('Useful Links'),
+          centerTitle: true,
+        ),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -79,7 +92,7 @@ class HomePage extends StatelessWidget {
                 icon: Icons.code,
                 label: 'Flutter GitHub repository',
                 color: Colors.black,
-                url: Uri.parse('https://github.com/'),
+                url: Uri.parse('https://github.com/flutter/flutter'),
               ),
               const SizedBox(height: 16),
               _buildButton(
@@ -93,7 +106,7 @@ class HomePage extends StatelessWidget {
                 icon: Icons.web,
                 label: 'Flutter Twitter account',
                 color: Colors.blueAccent,
-                url: Uri.parse('https://x.com/flutterdev'),
+                url: Uri.parse('https://twitter.com/flutterdev'),
               ),
               const SizedBox(height: 16),
               _buildButton(
